@@ -13,23 +13,23 @@ class VacuumCatalogueItemBase(BaseModel):
     category: str
     item_type: str
     components: str
-    subcomponents1: str
-    subcomponents2: str
-    supplier_part_number: str
-    supplier1: str
-    supplier2: str
-    supplier3: str
-    manufacturer1: str
-    manufacturer2: str
-    manufacturer3: str
-    cost: str
-    quotation_reference_number: str
-    who: str
+    subcomponents1: str | None
+    subcomponents2: str | None
+    supplier_part_number: str | None
+    supplier1: str | None
+    supplier2: str | None
+    supplier3: str | None
+    manufacturer1: str | None
+    manufacturer2: str | None
+    manufacturer3: str | None
+    cost: str | None
+    quotation_reference_number: str | None
+    who: str | None
     next_item_id: int
     stock_type: int
     default_ivs_location: int
     default_vacuum_owner: int
-    picture_directory: str
+    picture_directory: str | None
 
 
 class VacuumCatalogueItemCreate(VacuumCatalogueItemBase):
