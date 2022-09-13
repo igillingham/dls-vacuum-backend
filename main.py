@@ -1,5 +1,6 @@
 from typing import List
 from fastapi import Depends, FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
 # import crud
@@ -13,6 +14,24 @@ models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+# Configure CORS
+origins = [
+    "http://localhost",
+    "http://localhost:80",
+    "http://localhost:3000",
+]
+
+# Allow any host, http or https on the local network (*.lan)
+origins_regex = 'http[s]?://.*\.lan'
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_origin_regex=origins_regex,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Dependency
 def get_db():
